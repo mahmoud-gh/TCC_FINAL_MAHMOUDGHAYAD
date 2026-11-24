@@ -1,0 +1,352 @@
+.hidden { display: none !important; }
+
+.flows-list-view, .flow-editor-view {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.flows-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.flows-header h1 { flex: 1; font-size: 1.2rem; margin: 0; }
+.back-link { color: var(--text-dim); text-decoration: none; font-size: 1.2rem; }
+
+.new-flow-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.new-flow-form input { flex: 1; max-width: 320px; }
+
+.flow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.flow-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.flow-list li:hover { background: var(--panel-alt); }
+.flow-list .flow-name { flex: 1; font-weight: 600; }
+.flow-list .flow-meta { font-size: 0.8rem; color: var(--text-dim); }
+
+.user-row {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch !important;
+  cursor: default !important;
+  gap: 8px;
+}
+
+.user-row-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.password-form {
+  display: flex;
+  gap: 8px;
+}
+
+.password-form input { flex: 1; max-width: 240px; }
+
+.color-input {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+.flow-active-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--fechado);
+  color: white;
+}
+
+.flow-inactive-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--border);
+  color: var(--text-dim);
+}
+
+/* Editor topbar */
+.editor-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.editor-topbar #flow-name-input {
+  flex: 1;
+  max-width: 320px;
+}
+
+.active-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.editor-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 0;
+  position: relative;
+}
+
+.palette {
+  border-right: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  overflow-y: auto;
+}
+
+.palette-item {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: grab;
+  font-size: 0.85rem;
+  background: var(--panel-alt);
+}
+
+.palette-hint {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+#drawflow-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+#drawflow {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Node cards */
+.flow-node {
+  min-width: 220px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.flow-node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.flow-node-title { font-weight: 600; }
+
+.node-gear {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 0.9rem;
+}
+
+.flow-node-body {
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.flow-node-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.flow-node-chips .chip {
+  background: var(--accent);
+  color: white;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+}
+
+.flow-node-footer {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.flow-node-outcome { padding: 1px 6px; border-radius: 4px; background: var(--panel-alt); }
+
+.flow-node-stat-badge {
+  position: absolute;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  pointer-events: none;
+  transform: translateY(-130%);
+}
+
+/* Drawflow: sobrescreve o estilo padrão de demo da lib (fundo ciano, borda preta, selecionado vermelho) */
+.drawflow .drawflow-node {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  padding: 14px;
+}
+
+.drawflow .drawflow-node.selected {
+  background: var(--panel);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Cores de destaque por tipo de nó */
+.drawflow .drawflow-node.trigger { border-color: var(--fechado); border-width: 2px; }
+.drawflow .drawflow-node.send_message { border-color: var(--accent); border-width: 2px; }
+.drawflow .drawflow-node.pause { border-color: var(--novo); border-width: 2px; }
+.drawflow .drawflow-node.create_lead { border-color: var(--orcamento_enviado); border-width: 2px; }
+.drawflow .drawflow-node.stop_bot { border-color: var(--perdido); border-width: 2px; }
+
+/* Portas e conexões */
+.drawflow .input,
+.drawflow .output {
+  background: var(--panel);
+  border: 2px solid var(--accent);
+}
+
+.drawflow .connection .main-path {
+  stroke: var(--text-dim);
+}
+
+.drawflow .connection .main-path:hover,
+.drawflow .connection .main-path.selected {
+  stroke: var(--accent);
+}
+
+.drawflow .connection .point {
+  stroke: var(--border);
+  fill: var(--panel);
+}
+
+.drawflow .connection .point.selected,
+.drawflow .connection .point:hover {
+  fill: var(--accent);
+}
+
+/* Node side panel */
+.node-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 340px;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.node-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.node-panel-header h3 { margin: 0; font-size: 1rem; }
+.node-panel-header button { background: transparent; color: var(--text-dim); padding: 2px 8px; }
+
+#node-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.node-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.node-panel-footer .danger { background: var(--perdido); }
+
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: var(--text-dim); }
+.field textarea { min-height: 70px; resize: vertical; }
+
+.button-editor-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.button-editor-row input[type="text"] { flex: 1; }
+.button-editor-row .remove-btn { background: var(--perdido); padding: 6px 10px; }
+
+.tag-checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-checkbox-list label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  background: var(--panel-alt);
+  padding: 4px 8px;
+  border-radius: 6px;
+}

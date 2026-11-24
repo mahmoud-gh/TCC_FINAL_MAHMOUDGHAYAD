@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing — Campanhas</title>
+  <link rel="icon" type="image/png" href="/img/generated-image.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/marketing.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <div class="mk-wrap">
+    <header class="mk-header">
+      <div class="mk-brand">
+        <img src="/img/generated-image.png" alt="" class="mk-logo" />
+        <div>
+          <h1>Marketing ativo</h1>
+          <span class="mk-dim">Segmentação, campanhas e métricas — WhatsApp Business</span>
+        </div>
+      </div>
+      <div class="mk-header-acoes">
+        <a href="/" class="mk-btn mk-btn-ghost">← Voltar ao atendimento</a>
+      </div>
+    </header>
+
+    <nav class="mk-tabs">
+      <button class="mk-tab is-active" data-tab="campanhas">Campanhas</button>
+      <button class="mk-tab" data-tab="segmentos">Segmentos</button>
+      <button class="mk-tab" data-tab="modelos">Modelos</button>
+      <button class="mk-tab" data-tab="contatos">Contatos &amp; consentimento</button>
+      <button class="mk-tab" data-tab="metricas">Comparativo</button>
+    </nav>
+
+    <div id="mk-alert" class="mk-alert hidden"></div>
+
+    <!-- ============================ CAMPANHAS ============================ -->
+    <section class="mk-panel" data-panel="campanhas">
+      <div class="mk-panel-head">
+        <h2>Campanhas</h2>
+        <button type="button" id="nova-campanha" class="mk-btn">Nova campanha</button>
+      </div>
+      <div id="filtro-campanhas" class="fc-chips" role="group" aria-label="Filtrar campanhas"></div>
+      <div id="lista-campanhas" class="mk-list"></div>
+    </section>
+
+    <!-- ============================ SEGMENTOS ============================ -->
+    <section class="mk-panel hidden" data-panel="segmentos">
+      <div class="mk-panel-head">
+        <h2>Segmentos</h2>
+        <button type="button" id="novo-segmento" class="mk-btn">Novo segmento</button>
+      </div>
+      <div id="lista-segmentos" class="mk-list"></div>
+    </section>
+
+    <!-- ============================= MODELOS ============================= -->
+    <section class="mk-panel hidden" data-panel="modelos">
+      <div class="mk-panel-head">
+        <h2>Modelos de mensagem</h2>
+        <div class="fc-head-lista">
+          <button type="button" id="sincronizar-modelos" class="mk-btn mk-btn-ghost"
+            title="Atualiza a situação de aprovação a partir da sua conta do WhatsApp Business">Sincronizar com a Meta</button>
+          <button type="button" id="novo-modelo" class="mk-btn">Novo modelo</button>
+        </div>
+      </div>
+      <div id="aviso-modelos" class="md-sync-aviso"></div>
+      <div id="lista-modelos" class="mk-list"></div>
+    </section>
+
+    <!-- ============================ CONTATOS ============================= -->
+    <section class="mk-panel hidden" data-panel="contatos">
+      <div class="mk-panel-head">
+        <h2>Contatos &amp; consentimento</h2>
+        <div class="fc-head-lista">
+          <input id="busca-contato" class="mk-search" placeholder="buscar por nome ou telefone" />
+          <button type="button" id="abrir-interesses" class="mk-btn mk-btn-ghost">Interesses</button>
+        </div>
+      </div>
+      <div class="fc-filtros">
+        <div id="filtro-consent" class="fc-chips" role="group" aria-label="Filtrar por consentimento"></div>
+        <select id="filtro-interesse" class="fc-select" aria-label="Filtrar por interesse"></select>
+      </div>
+      <div id="lista-contatos" class="mk-list"></div>
+    </section>
+
+    <!-- ============================ MÉTRICAS ============================= -->
+    <section class="mk-panel hidden" data-panel="metricas">
+      <div class="mk-panel-head">
+        <h2>Comparativo manual × automatizado</h2>
+        <button type="button" id="recarregar-metricas" class="mk-btn mk-btn-ghost">Atualizar</button>
+      </div>
+      <div id="comparativo"></div>
+      <p class="mk-dim mk-note">
+        Denominador das taxas: mensagens efetivamente enviadas. Cada taxa conta envios
+        distintos, não eventos — reentrega de webhook ou vários cliques não inflam a métrica.
+        Clique numa campanha da lista para abrir a ficha dela.
+      </p>
+    </section>
+  </div>
+
+  <!-- ===================== FICHA DO CONTATO (modal) ===================== -->
+  <dialog id="ficha" class="fc-modal" aria-labelledby="fc-nome">
+    <div id="ficha-conteudo"></div>
+  </dialog>
+
+  <!-- ============== CAMPANHA, SEGMENTO E MODELO (modais) ============== -->
+  <dialog id="dlg-campanha" class="fc-modal" aria-labelledby="cp-titulo">
+    <div id="dlg-campanha-conteudo"></div>
+  </dialog>
+  <dialog id="dlg-segmento" class="fc-modal" aria-labelledby="sg-titulo">
+    <div id="dlg-segmento-conteudo"></div>
+  </dialog>
+  <dialog id="dlg-modelo" class="fc-modal" aria-labelledby="md-titulo">
+    <div id="dlg-modelo-conteudo"></div>
+  </dialog>
+
+  <!-- ================= LISTA DE INTERESSES (modal) ================= -->
+  <dialog id="gerir-interesses" class="fc-modal fc-modal-sm" aria-labelledby="gi-titulo">
+    <div id="gi-conteudo"></div>
+  </dialog>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/marketing.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM de Atendimento</title>
+  <link rel="icon" type="image/png" href="/img/generated-image.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-title">
+          <img src="/img/generated-image.png" alt="Mahmoud Tcc" class="brand-logo brand-logo-sm" />
+          <div>
+            <h1>Atendimento</h1>
+            <span id="current-user-name" class="current-user-name"></span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="/flows.html" title="Automações" id="nav-flows-link" class="nav-icon-link hidden">🤖</a>
+          <a href="/marketing.html" title="Marketing" id="nav-marketing-link" class="nav-icon-link hidden">📣</a>
+          <a href="/users.html" title="Equipe" id="nav-users-link" class="nav-icon-link hidden">👥</a>
+          <button id="logout-btn" title="Sair">⏻</button>
+        </nav>
+      </div>
+      <div class="filters">
+        <select id="filter-status">
+          <option value="">Todos os status</option>
+          <option value="novo">Novo</option>
+          <option value="em_conversa">Em conversa</option>
+          <option value="orcamento_enviado">Orçamento enviado</option>
+          <option value="fechado">Fechado</option>
+          <option value="perdido">Perdido</option>
+        </select>
+        <select id="filter-platform">
+          <option value="">WhatsApp</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="instagram">Instagram</option>
+        </select>
+      </div>
+      <div id="filter-assignment" class="filters hidden">
+        <select id="filter-assigned">
+          <option value="all">Todas as conversas</option>
+          <option value="mine">Minhas conversas</option>
+          <option value="unassigned">Não atribuídas</option>
+        </select>
+      </div>
+      <ul id="conversation-list" class="conversation-list"></ul>
+    </aside>
+
+    <main class="thread-panel">
+      <div id="thread-empty" class="thread-empty">
+        <p>Selecione uma conversa</p>
+      </div>
+
+      <div id="thread-view" class="thread-view hidden">
+        <header class="thread-header">
+          <div>
+            <h2 id="thread-name"></h2>
+            <span id="thread-platform" class="badge"></span>
+            <span id="thread-tags" class="thread-tags"></span>
+          </div>
+          <div class="thread-actions">
+            <span id="thread-assignment"></span>
+            <select id="thread-status"></select>
+          </div>
+        </header>
+
+        <div id="thread-messages" class="thread-messages"></div>
+
+        <form id="reply-form" class="reply-form">
+          <textarea id="reply-text" placeholder="Escreva uma resposta..." required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+
+        <section class="notes-section">
+          <h3>Notas internas</h3>
+          <ul id="notes-list" class="notes-list"></ul>
+          <form id="note-form">
+            <input type="text" id="note-body" placeholder="Adicionar nota..." />
+            <button type="submit">+</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

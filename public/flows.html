@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automações — CRM de Atendimento</title>
+  <link rel="icon" type="image/png" href="/img/generated-image.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/vendor/drawflow/drawflow.min.css" />
+  <link rel="stylesheet" href="/css/flows.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <div id="flow-list-view" class="flows-list-view hidden">
+    <div class="flows-header">
+      <a href="/index.html" class="back-link" title="Voltar pro inbox">←</a>
+      <img src="/img/generated-image.png" alt="Mahmoud Tcc" class="brand-logo brand-logo-sm" />
+      <h1>Automações</h1>
+      <button id="new-flow-btn">+ Novo fluxo</button>
+    </div>
+    <form id="new-flow-form" class="new-flow-form hidden">
+      <input type="text" id="new-flow-name" placeholder="Nome do fluxo" required />
+      <button type="submit">Criar</button>
+      <button type="button" id="new-flow-cancel">Cancelar</button>
+    </form>
+    <ul id="flow-list" class="flow-list"></ul>
+  </div>
+
+  <div id="flow-editor-view" class="flow-editor-view hidden">
+    <div class="editor-topbar">
+      <button id="back-to-list" title="Voltar">←</button>
+      <input id="flow-name-input" type="text" placeholder="Nome do fluxo" />
+      <label class="active-toggle">
+        <input type="checkbox" id="flow-active-toggle" /> Ativo
+      </label>
+      <button id="stats-toggle-btn" title="Estatísticas">📊</button>
+      <button id="save-flow-btn">Salvar</button>
+    </div>
+    <div class="editor-body">
+      <div class="palette">
+        <div class="palette-item" draggable="true" data-node="trigger">🚀 Início</div>
+        <div class="palette-item" draggable="true" data-node="send_message">💬 Mensagem</div>
+        <div class="palette-item" draggable="true" data-node="pause">⏱ Pausar</div>
+        <div class="palette-item" draggable="true" data-node="create_lead">🏷 Criar lead</div>
+        <div class="palette-item" draggable="true" data-node="stop_bot">⏹ Parar robô</div>
+        <p class="palette-hint">Arraste um nó pro canvas. Ligue as saídas arrastando dos pontinhos.</p>
+      </div>
+      <div id="drawflow-wrapper">
+        <div id="drawflow"></div>
+      </div>
+      <div id="node-panel" class="node-panel hidden">
+        <div class="node-panel-header">
+          <h3 id="node-panel-title">Editar nó</h3>
+          <button id="node-panel-close">✕</button>
+        </div>
+        <div id="node-panel-body"></div>
+        <div class="node-panel-footer">
+          <button id="node-panel-delete" class="danger">Excluir nó</button>
+          <button id="node-panel-save">Salvar nó</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/vendor/drawflow/drawflow.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/flows.js"></script>
+</body>
+</html>

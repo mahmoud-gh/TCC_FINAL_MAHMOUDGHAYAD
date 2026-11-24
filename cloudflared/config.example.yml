@@ -1,0 +1,9 @@
+# Copie este arquivo para ~/.cloudflared/config.yml e preencha os valores.
+# tunnel: gerado por "cloudflared tunnel create crm-atendimento"
+tunnel: SEU_TUNNEL_ID_AQUI
+credentials-file: C:\Users\SEU_USUARIO\.cloudflared\SEU_TUNNEL_ID_AQUI.json
+
+ingress:
+  - hostname: crm.SEUDOMINIO.com
+    service: http://localhost:3000
+  - service: http_status:404

@@ -1,0 +1,36 @@
+{
+  "name": "crm-atendimento",
+  "version": "1.0.0",
+  "description": "CRM de marketing e atendimento via WhatsApp Business Cloud API (oficial da Meta)",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate": "node src/db/migrate.js",
+    "create-user": "node scripts/create-user.js",
+    "sync-products": "node scripts/sync-products.js",
+    "importar-produtos": "node scripts/importar-produtos-csv.js",
+    "import-contacts": "node scripts/import-contacts.js",
+    "exportar": "node scripts/exportar-dados.js",
+    "db:status": "node scripts/db-status.js",
+    "test:db": "node scripts/teste-integracao.js",
+    "test:chatbot": "node scripts/testar-chatbot.js",
+    "testar-ia": "node scripts/testar-ia.js",
+    "hash-password": "node scripts/hash-password.js",
+    "postinstall": "node scripts/copy-drawflow-assets.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "drawflow": "^0.0.60",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

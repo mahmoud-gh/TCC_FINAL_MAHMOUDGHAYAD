@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipe — CRM de Atendimento</title>
+  <link rel="icon" type="image/png" href="/img/generated-image.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/flows.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <div id="users-view" class="flows-list-view">
+    <div class="flows-header">
+      <a href="/index.html" class="back-link" title="Voltar pro inbox">←</a>
+      <img src="/img/generated-image.png" alt="Mahmoud Tcc" class="brand-logo brand-logo-sm" />
+      <h1>Equipe</h1>
+      <button id="new-user-btn">+ Novo usuário</button>
+    </div>
+    <form id="new-user-form" class="new-flow-form hidden">
+      <input type="text" id="new-username" placeholder="usuário (login)" required />
+      <input type="password" id="new-password" placeholder="senha" required />
+      <input type="text" id="new-name" placeholder="nome" required />
+      <select id="new-role">
+        <option value="agent">Atendente</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <button type="submit">Criar</button>
+      <button type="button" id="new-user-cancel">Cancelar</button>
+    </form>
+    <ul id="user-list" class="flow-list"></ul>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/users.js"></script>
+</body>
+</html>
