@@ -18,7 +18,8 @@
     "test:chatbot": "node scripts/testar-chatbot.js",
     "testar-ia": "node scripts/testar-ia.js",
     "hash-password": "node scripts/hash-password.js",
-    "postinstall": "node scripts/copy-drawflow-assets.js"
+    "postinstall": "node scripts/copy-drawflow-assets.js",
+    "test:bateria": "node scripts/bateria-testes.js"
   },
   "engines": {
     "node": ">=22.5.0"

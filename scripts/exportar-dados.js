@@ -40,6 +40,13 @@ const CONSULTAS = [
     'Registro de cada execução de campanha: início, fim, resultado e resumo'],
 ];
 
+const COLUNAS_IDENTIFICADORAS = ['display_name', 'phone', 'contato', 'platform_user_id', 'profile_pic_url'];
+function semIdentificacao(linha) {
+  const copia = { ...linha };
+  for (const coluna of COLUNAS_IDENTIFICADORAS) delete copia[coluna];
+  return copia;
+}
+
 function paraCsv(linhas) {
   if (!linhas.length) return '';
   const colunas = Object.keys(linhas[0]);
@@ -61,7 +68,9 @@ function paraCsv(linhas) {
   let totalLinhas = 0;
 
   for (const [nome, sql, descricao] of CONSULTAS) {
-    const linhas = await db.prepare(sql).all();
+    // RNF02 — os dados para análise saem pelas chaves internas (contact_id),
+    // sem nome nem número de WhatsApp do titular.
+    const linhas = (await db.prepare(sql).all()).map(semIdentificacao);
     const arquivo = path.join(PASTA, `${nome}.csv`);
     fs.writeFileSync(arquivo, paraCsv(linhas), 'utf8');
     totalLinhas += linhas.length;
